@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 
-char* buf;
+char buf[50];
 
 int sum_to_n(int num) {
   int i, sum = 0;
@@ -13,9 +13,12 @@ int sum_to_n(int num) {
 void printSum() {
   char line[10];
   printf("Enter a number: ");
-  fgets(line, 10, stdin);
+if (fgets(line, 10, stdin) != NULL) {
+    strtok(line, "\n");
+}
+ // fgets(line, 10, stdin);
 
-  if (line != NULL) strtok(line, "\n");
+ // if (line != NULL) strtok(line, "\n");
 
   sprintf(buf, "sum=%d", sum_to_n(atoi(line)));
   printf("%s\n", buf);
